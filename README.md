@@ -1,145 +1,47 @@
-
 <p align="center">
-  <img src="zivpn.png" width="420">
+  <img src="zivpn.png" width="420" alt="ZiVPN UDP Server"/>
 </p>
 
-<h1 align="center">🚀 ZiVPN UDP Server</h1>
+<h1 align="center">ZiVPN UDP Server</h1>
 
-UDP server installation for **ZiVPN Tunnel (UDP)** VPN application.
+<p align="center">
+  Installer & manager untuk menjalankan <b>ZiVPN Tunnel (UDP)</b> di VPS Linux (Debian/Ubuntu).<br/>
+  <sub>Auto-detect arsitektur • Auto install binary • Auto systemd • Auto UFW & NAT</sub>
+</p>
 
-Server binary available for **Linux amd64**, **arm**, and **arm64** with automatic architecture detection.
-
----
-
-## 🧠 Features
-- Auto detect VPS architecture (amd64 / arm / arm64)  
-- Auto download & install latest UDP binary  
-- Auto setup **systemd service** 
-- Auto configure **UFW firewall** & NAT  
-- Auto apply default "zi" config  
-- Support for **Debian / Ubuntu** (minimal OS)  
-- Optional Dual SC or ZiVPN Only mode menu  
-- Auto alias command `menu` for `/usr/local/bin/zivpn-manager`  
+<p align="center">
+  <a href="https://github.com/prantas5758/udp-zivpn">
+    <img alt="Repo" src="https://img.shields.io/badge/GitHub-udp--zivpn-181717?logo=github&logoColor=white">
+  </a>
+  <img alt="OS" src="https://img.shields.io/badge/OS-Debian%20%7C%20Ubuntu-2b6cb0">
+  <img alt="Arch" src="https://img.shields.io/badge/Arch-amd64%20%7C%20arm%20%7C%20arm64-0ea5e9">
+  <img alt="Service" src="https://img.shields.io/badge/Service-systemd-10b981">
+</p>
 
 ---
 
-## 📦 Installation Menu
+## ✨ Overview
+**ZiVPN UDP Server** menyediakan script installer yang fokus pada kemudahan deploy:
+- Instalasi cepat
+- Service stabil (systemd + auto restart)
+- Firewall & NAT siap pakai
+- Menu manager untuk operasional harian
+
+---
+
+## ✅ Fitur
+- Auto detect arsitektur VPS (**amd64 / arm / arm64**)
+- Auto download & install **binary terbaru**
+- Auto setup **systemd service** (`zivpn.service`)
+- Auto configure **UFW firewall** & **NAT**
+- Apply konfigurasi default (**password: `zi`**)
+- Support **Debian / Ubuntu** (minimal OS)
+- Opsi mode: **Dual SC** atau **ZiVPN Only**
+- Alias command: `menu` → `/usr/local/bin/zivpn-manager`
+
+---
+
+## 🚀 Quick Install (Menu Installer)
 
 ```bash
 apt update -y && wget -q https://raw.githubusercontent.com/prantas5758/udp-zivpn/main/install.sh -O /usr/local/bin/install.sh && chmod +x /usr/local/bin/install.sh && /usr/local/bin/install.sh
-```
-
-> Installer akan otomatis:
-> - Download binary terbaru sesuai arsitektur  
-> - Setup systemd service `zivpn.service`  
-> - Setup firewall UFW & NAT  
-> - Set default password "zi"  
-> - Membuat menu otomatis saat login  
-
----
-
-## 🔧 Fix ZIVPN
-
-```bash
-wget -q https://raw.githubusercontent.com/prantas5758/udp-zivpn/main/fix-zivpn.sh -O /usr/local/bin/fix-zivpn.sh && chmod +x /usr/local/bin/fix-zivpn.sh && /usr/local/bin/fix-zivpn.sh
-```
-
-> Script ini akan:
-> - Memperbaiki service ZIVPN
-> - Reset firewall & NAT
-> - Membackup dan MeRestore Akun lama
-> - Memastikan server aman
-
-## 📦 Update Menu
-
-```bash
-wget -q https://raw.githubusercontent.com/prantas5758/udp-zivpn/main/update.sh -O /usr/local/bin/update-manager && chmod +x /usr/local/bin/update-manager && /usr/local/bin/update-manager
-```
-
-> Installer akan otomatis:
-> - Setup systemd service New `zivpn.service`  
-> - Setup firewall UFW & NAT  
-> - Set default password "zi"  
-> - Membuat menu otomatis saat login  
-
----
-
-## 🧼 Uninstall Menu
-
-```bash
-wget -q https://raw.githubusercontent.com/prantas5758/udp-zivpn/main/uninstall.sh -O /usr/local/bin/uninstall-zivpn && chmod +x /usr/local/bin/uninstall-zivpn && /usr/local/bin/uninstall-zivpn
-```
-
-> Uninstall akan:
-> - Stop dan disable systemd service  
-> - Hapus binary `/usr/local/bin/zivpn`  
-> - Hapus konfigurasi `/etc/zivpn/`  
-> - Hapus NAT / firewall rules  
-
----
-
-## 🖥 Supported Architecture
-
-| Architecture | Binary |
-|-------------|--------|
-| **x86_64 (AMD64)** | udp-zivpn-linux-amd64 |
-| **ARM 32-bit** | udp-zivpn-linux-arm |
-| **ARM 64-bit (ARMv8)** | udp-zivpn-linux-arm64 |
-
----
-
-## 📡 Default Configuration
-
-| Setting | Value |
-|---------|-------|
-| Default Password | `zi` |
-| Service Name | `zivpn.service` |
-| Config File | `/etc/zivpn/config.json` |
-| Binary Path | `/usr/local/bin/zivpn` |
-| Firewall / NAT | UDP 6000-19999 → 5667 |
-| Auto Menu Alias | `menu` → `/usr/local/bin/zivpn-manager` |
-
----
-
-## 📱 Client Application
-
-| Platform | Link |
-|----------|------|
-| Android | [ZiVPN Tunnel](https://play.google.com/store/apps/details?id=com.zi.zivpn) |
-
-> App: **ZiVPN Tunnel**
-
----
-
-## ⚙️ Systemd / Auto Restart
-
-- Service dijalankan dengan:
-```bash
-systemctl enable zivpn.service
-systemctl start zivpn.service
-```
-- Service akan **restart otomatis** jika mati
-- Tunggu **network-online.target** sebelum start service → mencegah error UDP bind  
-
----
-
-## 📞 Support
-
-For custom build, business inquiry, reseller system, panel, or telegram bot please contact support.
-
----
-
-### 🎉 Thank you for using **ZiVPN UDP Server**
-
-## ✅ Install (Release + Auto Verify SHA256)
-
-```bash
-curl -fsS https://raw.githubusercontent.com/Prantas5758/udp-zivpn/main/install-release.sh -o install-release.sh
-chmod +x install-release.sh
-sudo ./install-release.sh
-```
-
-Pilih versi release tertentu:
-```bash
-ZIVPN_TAG=v1.0.0 sudo ./install-release.sh
-```
